@@ -34,6 +34,8 @@ public class Product {
     @Expose
     private String category;
 
+    public Integer quantity;
+
 
     public Product() {
     }
@@ -124,4 +126,11 @@ public class Product {
         this.category = category;
     }
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 }
