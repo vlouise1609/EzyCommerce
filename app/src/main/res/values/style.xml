@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--To change the text styling of options menu items</item>-->
+        <item name="android:itemTextAppearance">@style/MyActionBar.MenuTextStyle</item>
+        <!--To change the background of options menu-->
+        <item name="android:itemBackground">@color/lightBrown</item>
+    </style>
+
+    <style name="MyActionBar.MenuTextStyle"
+        parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/brown</item>
+<!--        <item name="android:textStyle">bold</item>-->
+<!--        <item name="android:textSize">25sp</item>-->
+    </style>
+</resources>
