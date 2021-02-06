@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class FragmentCategory extends Fragment {
     ArrayList<Product> listCookBook;
     ArrayList<Product> listMystery;
     ArrayList<Product> listScifi;
+    Button Acc, Buss, Coo, Mys, Sci;
 
 
 
@@ -71,6 +73,7 @@ public class FragmentCategory extends Fragment {
         if (getArguments() != null) {
             category = getArguments().getString(ARG_PARAM1);
         }
+
     }
 
     @Override
@@ -80,51 +83,43 @@ public class FragmentCategory extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_category, container, false);
         rvProduct = view.findViewById(R.id.rvProduct);
         rvProduct.setNestedScrollingEnabled(false);
-//        String category = getArguments().getString("category");
         rvProduct.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-
-//        if (getActivity()!=null){
-//            Adapter = new ProductListAdapter();
-//        }
+        listAccesorries = new ArrayList<>();
+        listBusiness= new ArrayList<>();
+        listCookBook = new ArrayList<>();
+        listMystery = new ArrayList<>();
+        listMystery = new ArrayList<>();
 
         Retrofit retrofit = ApiClient.getRetrofit();
         AmazonService service = retrofit.create(AmazonService.class);
-//        AmazonService service = ApiClient.getRetrofit().create(AmazonService.class);
         Call<ProductResponse> call = service.getProduct("2201741385", "VanessaLouise");
-        Toast.makeText(view.getContext(), String.valueOf(service.getProduct("2201741385", "VanessaLouise")), Toast.LENGTH_LONG).show();
-        
 
         call.enqueue(new Callback<ProductResponse>() {
             @Override
             public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
                 Toast.makeText(view.getContext(), "dalam onresponse", Toast.LENGTH_LONG).show();
                 ArrayList<Product> listProduct = response.body().products;
-                Adapter = new ProductListAdapter();
-                Adapter.setListProduct(listProduct);
-                rvProduct.setAdapter(Adapter);
-
-
 
                 final int size = listProduct.size();
                 for (int i = 0; i < size; i++)
                 {
-                    if(listProduct.get(i).getCategory() == "accessories"){
+                    if(listProduct.get(i).getCategory().equals("accessories")){
                         listAccesorries.add(listProduct.get(i));
-                        String info = "list accesories" ;
-                        Toast.makeText(getActivity(), info, Toast.LENGTH_LONG).show();
-                    } else if(listProduct.get(i).getCategory() == "business"){
+                    } else if(listProduct.get(i).getCategory().equals("business")){
                         listBusiness.add(listProduct.get(i));
-                    } else if(listProduct.get(i).getCategory() == "cookbooks"){
+                    } else if(listProduct.get(i).getCategory().equals("cookbooks")){
                         listCookBook.add(listProduct.get(i));
-                    } else if(listProduct.get(i).getCategory() == "mystery"){
+                    } else if(listProduct.get(i).getCategory().equals("mystery")){
                         listMystery.add(listProduct.get(i));
-                    } else if(listProduct.get(i).getCategory() == "scifi"){
+                    } else if(listProduct.get(i).getCategory().equals("scifi")){
                         listScifi.add(listProduct.get(i));
                     }
 
                 }
 
+                Adapter = new ProductListAdapter(view.getContext(), listProduct);
+                rvProduct.setAdapter(Adapter);
 
             }
 
@@ -137,26 +132,45 @@ public class FragmentCategory extends Fragment {
             }
         });
 
-//        if(category == "accessories"){
-//            Adapter.setListProduct(listAccesorries);
-//            Adapter = new ProductListAdapter(view.getContext(), listAccesorries );
-//        } else if(category == "business"){
-//            Adapter.setListProduct(listBusiness);
-//            Adapter = new ProductListAdapter(view.getContext(), listBusiness );
-//        } else if(category == "cookbook"){
-//            Adapter.setListProduct(listCookBook);
-//            Adapter = new ProductListAdapter(view.getContext(), listCookBook );
-//        } else if(category == "mystery"){
-//            Adapter.setListProduct(listMystery);
-//            Adapter = new ProductListAdapter(view.getContext(), listMystery );
-//        } else if(category == "scifi"){
-//            Adapter.setListProduct(listScifi);
-//            Adapter = new ProductListAdapter(view.getContext(), listScifi );
-//        }
+        Acc = view.findViewById(R.id.accessories);
+        Acc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Adapter.setListProduct(listAccesorries);
+            }
+        });
 
-//        Adapter = new ProductListAdapter(view.getContext(), //);
-//        rvProduct.setAdapter(Adapter);
+        Buss = view.findViewById(R.id.business);
+        Buss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Adapter.setListProduct(listBusiness);
+            }
+        });
 
+        Coo = view.findViewById(R.id.cookbook);
+        Coo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Adapter.setListProduct(listCookBook);
+            }
+        });
+
+        Mys = view.findViewById(R.id.mystery);
+        Mys.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Adapter.setListProduct(listMystery);
+            }
+        });
+
+        Sci = view.findViewById(R.id.scifi);
+        Sci.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Adapter.setListProduct(listScifi);
+            }
+        });
 
 
         return view;

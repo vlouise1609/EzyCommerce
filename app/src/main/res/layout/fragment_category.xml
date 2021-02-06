@@ -5,10 +5,51 @@
     android:layout_height="match_parent"
     tools:context=".FragmentCategory">
 
+    <Button
+        android:id="@+id/accessories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Accessories" />
+
+    <Button
+        android:id="@+id/business"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="10dp"
+        android:text="Business" />
+
+    <Button
+        android:id="@+id/scifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="8dp"
+        android:text="Sci-fi" />
+
+    <Button
+        android:id="@+id/mystery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="230dp"
+        android:text="Mystery" />
+
+    <Button
+        android:id="@+id/cookbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="60dp"
+        android:text="Cookbook" />
+
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProduct"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"/>
 
 </FrameLayout>

@@ -38,6 +38,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(ctx).inflate(R.layout.activity_product_list_adapter, parent, false);
+
         return new ViewHolder(v);
     }
 
@@ -83,7 +84,19 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
         @Override
         public void onClick(View view) {
+            int position = getAdapterPosition();
+            Product product = productLists.get(position);
+            AppCompatActivity activity = (AppCompatActivity) view.getContext();
 
+            Bundle bundle1 = new Bundle();
+            bundle1.putLong("productId", product.getId());
+
+            ProductDetail productDetail = new ProductDetail();
+            productDetail.setArguments(bundle1);
+
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productDetail)
+                    .addToBackStack(null)
+                    .commit();
         }
     }
 }

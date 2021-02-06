@@ -30,65 +30,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         bundle = new Bundle();
-
-        accessoriesBtn = findViewById(R.id.accessories);
-        accessoriesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bundle.putString("category", "accessories");
-                FragmentCategory fragObject = FragmentCategory.newInstance("accessories");
-                fragObject.setArguments(bundle);
-            }
-        });
-
-        businessBtn = findViewById(R.id.business);
-        businessBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bundle.putString("category", "business");
-                FragmentCategory fragObject = FragmentCategory.newInstance("business");
-                fragObject.setArguments(bundle);
-            }
-        });
-
-        cookbookBtn = findViewById(R.id.cookbook);
-        cookbookBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bundle.putString("category", "cookbook");
-                FragmentCategory fragObject = FragmentCategory.newInstance("cookbook");
-                fragObject.setArguments(bundle);
-            }
-        });
-
-        mysteryBtn = findViewById(R.id.mystery);
-        mysteryBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bundle.putString("category", "mystery");
-                FragmentCategory fragObject = FragmentCategory.newInstance("mystery");
-                fragObject.setArguments(bundle);
-            }
-        });
-
-        scifiBtn = findViewById(R.id.scifi);
-        scifiBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bundle.putString("category", "scifi");
-                FragmentCategory fragObject = FragmentCategory.newInstance("scifi");
-                fragObject.setArguments(bundle);
-            }
-        });
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentCategory()).commit();
-
-        if (savedInstanceState == null) {
-            bundle.putString("category", "accessories");
-            FragmentCategory fragObject = FragmentCategory.newInstance("accessories");
-            fragObject.setArguments(bundle);
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentCategory()).commit();
-        }
 
     }
 
@@ -109,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return  true;
     }
+
 
 
 }
