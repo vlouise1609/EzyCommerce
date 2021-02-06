@@ -35,7 +35,7 @@ public class FragmentCategory extends Fragment {
     ArrayList<Product> listMystery;
     ArrayList<Product> listScifi;
     Button Acc, Buss, Coo, Mys, Sci;
-
+    DBManager dbManager;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -90,6 +90,8 @@ public class FragmentCategory extends Fragment {
         listCookBook = new ArrayList<>();
         listMystery = new ArrayList<>();
         listMystery = new ArrayList<>();
+
+        dbManager = new DBManager(view.getContext());
 
         Retrofit retrofit = ApiClient.getRetrofit();
         AmazonService service = retrofit.create(AmazonService.class);

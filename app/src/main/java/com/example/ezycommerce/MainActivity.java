@@ -17,14 +17,12 @@ public class MainActivity extends AppCompatActivity {
     public Bundle bundle;
     public Button accessoriesBtn, businessBtn, cookbookBtn, mysteryBtn, scifiBtn;
 
-    DBManager sqlite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sqlite = new DBManager(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
